@@ -5,7 +5,6 @@
         xmlns:converters="using:UniSolder.Desktop.Converters"
         x:Class="UniSolder.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
         Title="UniSolder 5.2 - Cross-Platform Control &amp; Telemetry"
         Width="1150" Height="780"
         MinWidth="850" MinHeight="600"
