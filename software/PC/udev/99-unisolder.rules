@@ -1,0 +1,9 @@
+# UniSolder 5.2 USB HID Permissions Rules
+# Vendor ID: 0x04D8 (Microchip Technology Inc.)
+# Product ID: 0x003C (UniSolder 5.2)
+
+# USB device level access
+SUBSYSTEM=="usb", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="003c", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+
+# hidraw node access (Linux HID driver)
+KERNEL=="hidraw*", ATTRS{idVendor}=="04d8", ATTRS{idProduct}=="003c", MODE="0666", GROUP="plugdev", TAG+="uaccess"
