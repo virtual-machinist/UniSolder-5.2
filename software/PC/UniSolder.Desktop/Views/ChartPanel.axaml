@@ -1,0 +1,64 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:UniSolder.Desktop.ViewModels"
+             xmlns:models="using:UniSolder.Desktop.Models"
+             xmlns:converters="using:UniSolder.Desktop.Converters"
+             xmlns:sp="using:ScottPlot.Avalonia"
+             x:Class="UniSolder.Desktop.Views.ChartPanel"
+             x:DataType="vm:TelemetryChartViewModel">
+
+    <Grid ColumnDefinitions="*,280" Margin="10">
+        <!-- Main Plot Area -->
+        <Border Grid.Column="0" Background="#0F172A" CornerRadius="8" Padding="10" Margin="0,0,10,0" BorderBrush="#334155" BorderThickness="1">
+            <sp:AvaPlot x:Name="PlotControl" />
+        </Border>
+
+        <!-- Series Legend & Control Panel -->
+        <Border Grid.Column="1" Background="#1E293B" CornerRadius="8" Padding="14" BorderBrush="#334155" BorderThickness="1">
+            <Grid RowDefinitions="Auto,Auto,*,Auto">
+                <!-- Header -->
+                <TextBlock Grid.Row="0" Text="Telemetry Channels" FontSize="16" FontWeight="SemiBold" Foreground="#F8FAFC" Margin="0,0,0,10" />
+
+                <!-- Action Controls -->
+                <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8" Margin="0,0,0,12">
+                    <Button Command="{Binding TogglePauseCommand}" Background="#334155" Foreground="#F8FAFC" Padding="10,5">
+                        <TextBlock Text="{Binding IsPaused, Converter={x:Null}, StringFormat='Paused: {0}'}" FontSize="12" />
+                    </Button>
+                    <Button Command="{Binding ClearDataCommand}" Background="#EF4444" Foreground="#FFFFFF" Padding="10,5">
+                        <TextBlock Text="Clear" FontSize="12" FontWeight="SemiBold" />
+                    </Button>
+                </StackPanel>
+
+                <!-- Series Toggles List -->
+                <ScrollViewer Grid.Row="2">
+                    <ItemsControl ItemsSource="{Binding SeriesList}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate x:DataType="models:ChartSeriesConfig">
+                                <Border Background="#0F172A" CornerRadius="6" Padding="8,6" Margin="0,0,0,6" BorderBrush="#334155" BorderThickness="1">
+                                    <Grid ColumnDefinitions="Auto,Auto,*,Auto">
+                                        <!-- Color Indicator -->
+                                        <Border Grid.Column="0" Width="10" Height="10" CornerRadius="5" Margin="0,0,8,0"
+                                                Background="{Binding HexColor, Converter={StaticResource HexColorToBrushConverter}}"
+                                                VerticalAlignment="Center"/>
+
+                                        <!-- Visibility Checkbox -->
+                                        <CheckBox Grid.Column="1" IsChecked="{Binding IsVisible}" Margin="0,0,6,0" VerticalAlignment="Center" />
+
+                                        <!-- Series Name -->
+                                        <TextBlock Grid.Column="2" Text="{Binding Name}" FontSize="12" Foreground="#E2E8F0" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+
+                                        <!-- Live Value -->
+                                        <TextBlock Grid.Column="3" Text="{Binding CurrentValue, StringFormat='{}{0:F1}'}" FontSize="12" FontWeight="SemiBold" Foreground="#38BDF8" VerticalAlignment="Center" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+
+                <!-- Sample Counter Stats -->
+                <TextBlock Grid.Row="3" Text="{Binding SampleCount, StringFormat='Total Samples: {0:N0}'}" FontSize="11" Foreground="#64748B" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

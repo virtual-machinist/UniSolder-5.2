@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniSolder.Core", "UniSolder
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniSolder.Core.Tests", "UniSolder.Core.Tests\UniSolder.Core.Tests.csproj", "{7F59607E-6C88-4406-B32C-560EE55C3541}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniSolder.Desktop", "UniSolder.Desktop\UniSolder.Desktop.csproj", "{6890CF92-16D5-47AA-8243-3C4D44A9A415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniSolder.Desktop.Tests", "UniSolder.Desktop.Tests\UniSolder.Desktop.Tests.csproj", "{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +87,30 @@ Global
 		{7F59607E-6C88-4406-B32C-560EE55C3541}.Release|x64.Build.0 = Release|Any CPU
 		{7F59607E-6C88-4406-B32C-560EE55C3541}.Release|x86.ActiveCfg = Release|Any CPU
 		{7F59607E-6C88-4406-B32C-560EE55C3541}.Release|x86.Build.0 = Release|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Debug|x64.Build.0 = Debug|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Debug|x86.Build.0 = Debug|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Release|x64.ActiveCfg = Release|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Release|x64.Build.0 = Release|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Release|x86.ActiveCfg = Release|Any CPU
+		{6890CF92-16D5-47AA-8243-3C4D44A9A415}.Release|x86.Build.0 = Release|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Debug|x86.Build.0 = Debug|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Release|x64.Build.0 = Release|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Release|x86.ActiveCfg = Release|Any CPU
+		{EC853AA1-B3DA-4C16-9270-84EE2E4393C9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

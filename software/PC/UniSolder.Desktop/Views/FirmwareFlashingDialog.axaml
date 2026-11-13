@@ -1,0 +1,76 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:UniSolder.Desktop.ViewModels"
+             x:Class="UniSolder.Desktop.Views.FirmwareFlashingDialog"
+             x:DataType="vm:FirmwareFlashingViewModel">
+
+    <ScrollViewer Margin="20">
+        <StackPanel MaxWidth="850" HorizontalAlignment="Center" Spacing="16">
+            <!-- Header Card -->
+            <Border Background="#1E293B" CornerRadius="8" Padding="16" BorderBrush="#334155" BorderThickness="1">
+                <Grid ColumnDefinitions="*,Auto">
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="⚡ PIC32 Firmware Flashing Wizard" FontSize="18" FontWeight="SemiBold" Foreground="#F8FAFC" />
+                        <TextBlock Text="Flash new firmware (.hex) with automatic bootloader switching and checksum validation." FontSize="12" Foreground="#94A3B8" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- File Selection Card -->
+            <Border Background="#1E293B" CornerRadius="8" Padding="16" BorderBrush="#334155" BorderThickness="1">
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                    <Button Grid.Row="0" Grid.Column="0" x:Name="BrowseButton" Click="OnBrowseClicked"
+                            Background="#334155" Foreground="#F8FAFC" Padding="12,8" Margin="0,0,12,0"
+                            IsEnabled="{Binding !IsFlashing}">
+                        <TextBlock Text="📁 Browse HEX File..." FontSize="12" FontWeight="SemiBold" />
+                    </Button>
+
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding HexFilePath, Mode=TwoWay}"
+                             PlaceholderText="Select a valid firmware .hex file..."
+                             VerticalAlignment="Center" IsReadOnly="False" />
+
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="3" Orientation="Horizontal" Spacing="16" Margin="0,12,0,0">
+                        <TextBlock Text="{Binding RecordCount, StringFormat='Records: {0:N0}'}" FontSize="12" Foreground="#CBD5E1" />
+                        <TextBlock Text="{Binding TotalByteCount, StringFormat='Payload Size: {0:N0} bytes'}" FontSize="12" Foreground="#CBD5E1" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Progress & Controls Card -->
+            <Border Background="#1E293B" CornerRadius="8" Padding="16" BorderBrush="#334155" BorderThickness="1">
+                <StackPanel Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBlock Grid.Column="0" Text="{Binding StatusMessage}" FontSize="13" FontWeight="SemiBold" Foreground="#38BDF8" TextTrimming="CharacterEllipsis" />
+                        <TextBlock Grid.Column="1" Text="{Binding ProgressPercentage, StringFormat='{}{0:0}%'}" FontSize="13" FontWeight="Bold" Foreground="#F8FAFC" />
+                    </Grid>
+
+                    <ProgressBar Minimum="0" Maximum="100" Value="{Binding ProgressPercentage}" Height="12" CornerRadius="6" Foreground="#2563EB" Background="#0F172A" />
+
+                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,6,0,0">
+                        <Button Command="{Binding StartFlashingCommand}" IsEnabled="{Binding CanStartFlash}"
+                                Background="#10B981" Foreground="#FFFFFF" Padding="16,8">
+                            <TextBlock Text="⚡ Start Flashing" FontSize="13" FontWeight="SemiBold" />
+                        </Button>
+
+                        <Button Command="{Binding CancelFlashingCommand}" IsEnabled="{Binding CanCancelFlash}"
+                                Background="#EF4444" Foreground="#FFFFFF" Padding="16,8">
+                            <TextBlock Text="🛑 Cancel" FontSize="13" FontWeight="SemiBold" />
+                        </Button>
+
+                        <Button Command="{Binding ClearLogCommand}"
+                                Background="#334155" Foreground="#CBD5E1" Padding="12,8">
+                            <TextBlock Text="Clear Console" FontSize="12" />
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Log Terminal Card -->
+            <Border Background="#0F172A" CornerRadius="8" Padding="12" BorderBrush="#334155" BorderThickness="1" MinHeight="220" MaxHeight="300">
+                <ScrollViewer>
+                    <TextBox Text="{Binding LogOutput}" FontFamily="Consolas, Monospace, Courier New" FontSize="11" Foreground="#10B981" Background="Transparent" BorderThickness="0" IsReadOnly="True" TextWrapping="Wrap" />
+                </ScrollViewer>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
