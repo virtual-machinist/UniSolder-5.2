@@ -84,7 +84,7 @@ namespace UniSolder.Desktop.Tests.Services
                 var service = new FirmwareUpdateService(mockConnection.Object);
 
                 FlashProgress? lastProgress = null;
-                var progress = new Progress<FlashProgress>(p => lastProgress = p);
+                var progress = new ActionProgress<FlashProgress>(p => lastProgress = p);
 
                 await service.FlashFirmwareAsync(hexPath, progress);
 

@@ -1,6 +1,7 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:vm="using:UniSolder.Desktop.ViewModels"
+             xmlns:material="using:Material.Icons.Avalonia"
              x:Class="UniSolder.Desktop.Views.PidTuningPanel"
              x:DataType="vm:PidTuningViewModel">
 
@@ -10,7 +11,10 @@
             <Border Background="#1E293B" CornerRadius="8" Padding="16" BorderBrush="#334155" BorderThickness="1">
                 <Grid ColumnDefinitions="*,Auto,Auto">
                     <StackPanel Grid.Column="0">
-                        <TextBlock Text="PID Control Parameters" FontSize="18" FontWeight="SemiBold" Foreground="#F8FAFC" />
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <material:MaterialIcon Kind="Tune" Width="20" Height="20" Foreground="#A855F7" VerticalAlignment="Center" />
+                            <TextBlock Text="PID Control Parameters" FontSize="18" FontWeight="SemiBold" Foreground="#F8FAFC" VerticalAlignment="Center" />
+                        </StackPanel>
                         <TextBlock Text="{Binding StatusMessage}" FontSize="12" Foreground="#94A3B8" Margin="0,4,0,0"/>
                     </StackPanel>
 
@@ -18,10 +22,16 @@
 
                     <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
                         <Button Command="{Binding ReadParametersCommand}" Background="#334155" Foreground="#F8FAFC" Padding="12,6">
-                            <TextBlock Text="📥 Read from Device" FontSize="12" FontWeight="SemiBold" />
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <material:MaterialIcon Kind="Download" Width="16" Height="16" VerticalAlignment="Center" />
+                                <TextBlock Text="Read from Device" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
                         </Button>
                         <Button Command="{Binding WriteParametersCommand}" Background="#2563EB" Foreground="#FFFFFF" Padding="12,6">
-                            <TextBlock Text="📤 Write to Device" FontSize="12" FontWeight="SemiBold" />
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <material:MaterialIcon Kind="Upload" Width="16" Height="16" VerticalAlignment="Center" />
+                                <TextBlock Text="Write to Device" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center" />
+                            </StackPanel>
                         </Button>
                     </StackPanel>
                 </Grid>

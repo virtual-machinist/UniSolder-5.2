@@ -104,7 +104,7 @@ namespace UniSolder.Desktop.ViewModels
 
             AppendLog($"--- Starting Firmware Flashing at {DateTime.Now:HH:mm:ss} ---");
 
-            var progress = new Progress<FlashProgress>(p =>
+            var progress = new ActionProgress<FlashProgress>(p =>
             {
                 ProgressPercentage = p.Percentage;
                 StatusMessage = p.StatusMessage;
